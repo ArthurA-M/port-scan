@@ -16,19 +16,19 @@ def open_port(host, port):
     except:return False
     return True
 
-if sys.argv[1] == "all":
+if sys.argv[1] == "all": #affiche l'état de tous les ports demandés
     for i in range(int(sys.argv[3]),int(sys.argv[4])+1):
         if open_port(sys.argv[2], i):
             print(f"{GREEN}[+] {sys.argv[2]}:{i} is open")
         else:
             print(f"{GRAY}[-] {sys.argv[2]}:{i} is close")
 
-elif sys.argv[1] == "open":
+elif sys.argv[1] == "open": #affiche les ports ouverts parmis ceux demandés
     for i in range(int(sys.argv[3]),int(sys.argv[4])+1):
         if open_port(sys.argv[2], i):
             print(f"{GREEN}[+] {sys.argv[2]}:{i} is open")
 
-elif sys.argv[1] == "listen":
+elif sys.argv[1] == "listen": #affiche les changement d'états des ports
     ports = [i for i in range(int(sys.argv[3]),int(sys.argv[4])+1) if open_port(sys.argv[2], i)]
     while True:
         new_ports = [i for i in range(int(sys.argv[3]),int(sys.argv[4])+1) if open_port(sys.argv[2], i)]
@@ -41,7 +41,7 @@ elif sys.argv[1] == "listen":
                 print(f"{GRAY}[-] {sys.argv[2]}:{i} is closed")
             ports = new_ports
 
-else:
+else: #affiche l'état d'un port précis
     if open_port(sys.argv[1], sys.argv[2]):
         print(f"{GREEN}[+] {sys.argv[1]}:{sys.argv[2]} is open")
     else:

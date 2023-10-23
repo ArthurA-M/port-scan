@@ -7,7 +7,7 @@ You can use:
 
 to only scan one port
 
- - python port-scan.py all host min_port max_port
+ - python port-scan.py all host port
 
 to see the state of all ports between min_port and max_port
 
